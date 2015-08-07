@@ -3,12 +3,13 @@ function House( numberOfDoors, numberOfWindows ) {
   this.numberOfWindows = numberOfWindows;
 
   this.toString = function () {
-    var houseString = (this.numberOfDoors != 1) ? "doors" : "door";
-    var windowString = (this.numberOfWindows != 1) ? "windows" : "window";
 
-    return "The house has " + this.numberOfDoors + " "
-        + houseString + " and " + this.numberOfWindows + " "
-        + windowString;
+    return "The house has " + pluralize("door", this.numberOfDoors)
+        + " and " + pluralize("window", this.numberOfWindows);
+    function pluralize( word, quant ) {
+      var outputString = quant +" "+ ((quant != 1) ? word + 's' :word);
+      return outputString;
+    }
   }
 };
 
